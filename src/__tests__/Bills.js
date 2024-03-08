@@ -1,33 +1,14 @@
 /**
  * @jest-environment jsdom
  */
-
 import {fireEvent, screen, waitFor} from "@testing-library/dom"
-import userEvent from '@testing-library/user-event'
 import BillsUI from "../views/BillsUI.js"
 import { bills } from "../fixtures/bills.js"
 import { ROUTES_PATH} from "../constants/routes.js";
 import {localStorageMock} from "../__mocks__/localStorage.js";
 import Bills from "../containers/Bills.js"
 import store from "../__mocks__/store.js"
-import mockStore from "../__mocks__/store"
-
 import router from "../app/Router.js";
-import { data } from "jquery";
-
-/*import store from "../__mocks__/store.js"
-import userEvent from '@testing-library/user-event'
-import { localStorageMock } from "../__mocks__/localStorage.js"
-
-const onNavigate = (pathname) => {
-  document.body.innerHTML = ROUTES({ pathname })
-}
-
-Object.defineProperty(window, 'localStorage', { value: localStorageMock })
-window.localStorage.setItem('user', JSON.stringify({
-  type: 'Employee'
-}))
-let bills*/
 
 Object.defineProperty(window, 'localStorage', { value: localStorageMock })
 window.localStorage.setItem('user', JSON.stringify({
@@ -36,7 +17,6 @@ window.localStorage.setItem('user', JSON.stringify({
 
 describe("Given I am connected as an employee", () => {
   beforeEach(() => {
-    //localStorage.setItem("user", JSON.stringify({ type: "Employee", email: "a@a" }));
     const root = document.createElement("div")
     root.setAttribute("id", "root")
     document.body.append(root)
@@ -119,7 +99,6 @@ describe("Given I am connected as an employee", () => {
       expect(handleClickIconEye).toHaveBeenCalled()
       expect(screen.getByTestId('modaleFile')).toBeTruthy()
     })
-    
   })
   describe("Given I am a user connected as Employee", () => {
     describe("When an error occurs on API", () => {

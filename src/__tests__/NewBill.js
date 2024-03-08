@@ -8,15 +8,14 @@ import BillsUI from "../views/BillsUI.js"
 import NewBill from "../containers/NewBill.js"
 import store from "../__mocks__/store.js"
 import mockStore from "../__mocks__/store"
-import userEvent from '@testing-library/user-event'
 import { localStorageMock } from "../__mocks__/localStorage.js"
-import { ROUTES, ROUTES_PATH } from "../constants/routes"
+import { ROUTES } from "../constants/routes"
 import router from "../app/Router.js"
 import { billTest } from "../__mocks__/bill.js"
 import { mockInputFile } from "../__mocks__/inputFile.js"
 
 let newBill
-jest.mock("../app/store", () => mockStore);
+jest.mock("../app/store", () => mockStore)
 
 const onNavigate = (pathname) => {
   document.body.innerHTML = ROUTES({ pathname })
@@ -94,9 +93,7 @@ describe("Given I am connected as an employee", () => {
         router()
       })
       test("Then test post method", async () => {
-        
         const result = await mockStore.bills().update(billTest)
-
         expect(result).toBeTruthy()
         expect(result.id).toBe("47qAXb6fIm2zOKkLzMro")
       })

@@ -30,6 +30,14 @@ bill-app/
 
 ## Comment lancer l'application en local ?
 
+### Script de lancement en powerShell
+# Commande 1
+Start-Process powershell -ArgumentList "cd 'D:\@sites\Billed-app\Billed-app-Billed-app-FR-Back\'; npm run run:dev"
+
+
+# Commande 2
+Start-Process powershell -ArgumentList "cd 'D:\@sites\Billed-app\Billed-app-Billed-app-FR-Front\'; live-server"
+
 ### étape 1 - Lancer le backend :
 
 Suivez les indications dans le README du projet backend.
