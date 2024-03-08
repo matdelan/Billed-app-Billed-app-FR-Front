@@ -88,6 +88,7 @@ export default class {
   handleEditTicket(e, bill, bills) {
     if (this.counter === undefined || this.id !== bill.id) this.counter = 0
     if (this.id === undefined || this.id !== bill.id) this.id = bill.id
+    //if open
     if (this.counter % 2 === 0) {
       bills.forEach(b => {
         $(`#open-bill${b.id}`).css({ background: '#0D5AE5' })
@@ -138,17 +139,30 @@ export default class {
       $(`#status-bills-container${this.index}`)
         .html(cards(filteredBills(bills, getStatus(this.index))))
       this.counter ++
+      const content = `#status-bills-container${this.index}`
+      $(content).find('.bill-card').each(function() {
+        bills.forEach(bill => {
+          //console.log(this.id + " --- " + 'open-bill' + bill.id)
+          if(this.id == ('open-bill' + bill.id)) {
+            //$(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
+            bill.display = true
+          }
+        })
+      })
     } else {
       $(`#arrow-icon${this.index}`).css({ transform: 'rotate(90deg)'})
       $(`#status-bills-container${this.index}`)
         .html("")
       this.counter ++
+      
     }
-
+ 
     bills.forEach(bill => {
-      $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
+      if(bill.display) {
+        $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
+        bill.display = false
+      }
     })
-
     return bills
 
   }

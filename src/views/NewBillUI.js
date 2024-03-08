@@ -53,16 +53,16 @@ export default () => {
                     <label for="commentary" class="bold-label">Commentaire</label>
                     <textarea class="form-control blue-border" data-testid="commentary" rows="3"></textarea>
                   </div>
-                  <div class="col-half">
+                  <div id="file-content" class="col-half">
                     <label for="file" class="bold-label">Justificatif</label>
-                    <input required type="file" class="form-control blue-border" data-testid="file" />
+                    <input required type="file" class="form-control blue-border" data-testid="file" id="file" />
                   </div>
                 </div>
             </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="col-half">
-                  <button type="submit" id='btn-send-bill' class="btn btn-primary">Envoyer</button>
+                  <button type="submit" id='btn-send-bill' data-testid='btn-send-bill' class="btn btn-primary">Envoyer</button>
                 </div>
               </div>
             </div>
